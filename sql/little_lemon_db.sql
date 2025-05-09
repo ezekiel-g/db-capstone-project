@@ -33,7 +33,7 @@ CREATE TABLE `bookings` (
   KEY `employee_id_idx` (`employee_id`),
   CONSTRAINT `customer_id` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `employee_id` FOREIGN KEY (`employee_id`) REFERENCES `employees` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `bookings` (
 
 LOCK TABLES `bookings` WRITE;
 /*!40000 ALTER TABLE `bookings` DISABLE KEYS */;
-INSERT INTO `bookings` VALUES (1,1,1,'2025-05-01 18:30:00',7),(2,2,3,'2025-05-02 19:00:00',3),(3,3,1,'2025-05-03 20:15:00',5),(4,4,4,'2025-05-04 18:45:00',2),(5,5,3,'2025-05-05 17:30:00',6);
+INSERT INTO `bookings` VALUES (1,1,1,'2025-05-01 18:30:00',7),(2,2,3,'2025-05-02 19:00:00',3),(3,3,1,'2025-05-03 20:15:00',5),(4,4,4,'2022-10-18 17:00:00',2),(5,5,3,'2025-05-05 17:30:00',6),(11,3,2,'2022-11-12 18:00:00',3),(12,2,3,'2022-10-11 18:00:00',2),(13,1,5,'2022-10-13 18:00:00',2),(14,1,2,'2022-10-14 18:00:00',2),(15,1,2,'2022-10-15 18:00:00',2),(16,2,3,'2022-10-16 18:00:00',3),(17,2,3,'2022-10-17 18:00:00',3),(18,2,3,'2022-10-18 18:00:00',3);
 /*!40000 ALTER TABLE `bookings` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -285,4 +285,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-08 21:41:51
+-- Dump completed on 2025-05-09 13:10:44
