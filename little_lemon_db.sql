@@ -121,7 +121,7 @@ CREATE TABLE `menu_item_orders` (
   KEY `order_id_idx` (`order_id`),
   CONSTRAINT `menu_item_id` FOREIGN KEY (`menu_item_id`) REFERENCES `menu_items` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `order_id` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -130,7 +130,7 @@ CREATE TABLE `menu_item_orders` (
 
 LOCK TABLES `menu_item_orders` WRITE;
 /*!40000 ALTER TABLE `menu_item_orders` DISABLE KEYS */;
-INSERT INTO `menu_item_orders` VALUES (15,1,1,14.00,2,28.00),(16,3,1,7.00,1,7.00),(17,5,2,13.50,1,13.50),(18,6,2,5.00,2,10.00),(19,7,3,9.00,2,18.00),(20,9,3,5.50,2,11.00),(21,1,4,14.00,1,14.00),(22,6,5,5.00,2,10.00),(23,3,5,10.00,1,10.00);
+INSERT INTO `menu_item_orders` VALUES (1,1,1,42.00,1,42.00),(2,3,1,28.00,1,28.00),(3,9,1,11.00,2,22.00),(4,4,2,55.00,2,110.00),(5,5,2,36.00,1,36.00),(6,8,2,21.00,1,21.00),(7,6,3,48.00,2,96.00),(8,2,3,39.00,1,39.00),(9,9,3,9.00,2,18.00);
 /*!40000 ALTER TABLE `menu_item_orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -159,7 +159,7 @@ CREATE TABLE `menu_items` (
 
 LOCK TABLES `menu_items` WRITE;
 /*!40000 ALTER TABLE `menu_items` DISABLE KEYS */;
-INSERT INTO `menu_items` VALUES (1,1,'Spaghetti Carbonara','Pasta with eggs, pecorino cheese, pancetta, and black pepper',14.00),(2,1,'Margherita Pizza','Neapolitan-style pizza with mozzarella, tomatoes, and basil',12.00),(3,1,'Bruschetta','Toasted bread with tomato, garlic, and basil',7.00),(4,2,'Salmon Nigiri','Sushi rice topped with fresh salmon slices',10.50),(5,2,'Tonkotsu Ramen','Rich pork broth with noodles, egg, and scallions',13.50),(6,2,'Edamame','Steamed soybeans with sea salt',5.00),(7,3,'Tacos al Pastor','Corn tortillas with marinated pork, pineapple, and cilantro',9.00),(8,3,'Chiles Rellenos','Poblano peppers stuffed with cheese, in tomato sauce',11.00),(9,3,'Guacamole & Chips','Avocado dip served with tortilla chips',6.00);
+INSERT INTO `menu_items` VALUES (1,1,'Wagyu Bolognese Tagliatelle','Premium wagyu beef slow-cooked in red wine',42.00),(2,1,'Truffle Risotto','Creamy risotto with white truffle and parmesan',39.00),(3,1,'Antipasto Platter','Cured meats, cheeses, olives, grilled vegetables',28.00),(4,2,'Omakase Sushi Set','Chef’s selection of premium sushi (12 pieces)',55.00),(5,2,'Black Cod Miso','Grilled black cod in sweet miso sauce',36.00),(6,2,'Wagyu Tataki','Seared wagyu beef with ponzu sauce',48.00),(7,3,'Carne Asada Platter','Grilled steak with rice, beans, and tortillas',33.00),(8,3,'Lobster Tacos (3)','Grilled lobster with chipotle crema',45.00),(9,3,'Tequila Lime Chicken','Marinated chicken with tequila lime glaze',29.00);
 /*!40000 ALTER TABLE `menu_items` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,9 +240,41 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (1,1,1,3,45.00),(2,2,2,2,32.50),(3,3,4,4,60.00),(4,4,3,1,15.00),(5,5,5,2,28.00);
+INSERT INTO `orders` VALUES (1,1,2,5,92.00),(2,2,4,3,167.00),(3,3,3,4,153.00);
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `orders_view`
+--
+
+DROP TABLE IF EXISTS `orders_view`;
+/*!50001 DROP VIEW IF EXISTS `orders_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `orders_view` AS SELECT 
+ 1 AS `id`,
+ 1 AS `quantity`,
+ 1 AS `total_cost`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `orders_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `orders_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`user1`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `orders_view` AS select `orders`.`id` AS `id`,`orders`.`quantity` AS `quantity`,`orders`.`total_cost` AS `total_cost` from `orders` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -253,4 +285,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-08 17:50:03
+-- Dump completed on 2025-05-08 21:41:51
