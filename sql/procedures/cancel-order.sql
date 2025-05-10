@@ -1,4 +1,6 @@
-CREATE DEFINER=`user1`@`%` PROCEDURE `cancel_order`(
+DELIMITER //
+
+CREATE PROCEDURE `cancel_order`(
 	IN id INT
 )
 BEGIN 
@@ -11,3 +13,6 @@ BEGIN
 		SELECT CONCAT('Order not found') AS Message; 
 	END IF;
 END
+//
+
+DELIMITER ;

@@ -1,4 +1,6 @@
-CREATE DEFINER=`user1`@`%` PROCEDURE `add_valid_booking`(
+DELIMITER //
+
+CREATE PROCEDURE `add_valid_booking`(
 	IN CustomerID INT,
     IN EmployeeID INT,
 	IN BookingSlot DATETIME, 
@@ -36,3 +38,6 @@ BEGIN
         SELECT CONCAT('Table ', TableNumber, ' is already booked') as BookingStatus;
 	END IF;
 END
+//
+
+DELIMITER ;

@@ -1,4 +1,6 @@
-CREATE DEFINER=`user1`@`%` PROCEDURE `cancel_booking`(
+DELIMITER //
+
+CREATE PROCEDURE `cancel_booking`(
 	IN BookingID INT
 )
 BEGIN
@@ -23,3 +25,6 @@ BEGIN
         SELECT CONCAT('Booking ', BookingID, ' not found') as BookingStatus;
     END IF;
 END
+//
+
+DELIMITER ;

@@ -1,4 +1,6 @@
-CREATE DEFINER=`user1`@`%` PROCEDURE `check_booking`(
+DELIMITER //
+
+CREATE PROCEDURE `check_booking`(
 	IN BookingSlot DATETIME, 
     IN TableNumber INT
 )
@@ -18,3 +20,6 @@ BEGIN
 		SELECT CONCAT('Table ', TableNumber, ' is available') as BookingStatus;
     END IF;
 END
+//
+
+DELIMITER ;
