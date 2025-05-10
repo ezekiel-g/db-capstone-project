@@ -1,4 +1,6 @@
-CREATE DEFINER=`user1`@`%` PROCEDURE `update_booking`(
+DELIMITER //
+
+CREATE PROCEDURE `update_booking`(
 	IN BookingID INT,
 	IN BookingSlot DATETIME
 )
@@ -25,3 +27,6 @@ BEGIN
         SELECT CONCAT('Booking ', BookingID, ' not found') as BookingStatus;
     END IF;
 END
+//
+
+DELIMITER ;
